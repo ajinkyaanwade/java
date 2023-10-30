@@ -1,0 +1,258 @@
+Name_Ajinkya Anwade
+Roll_no_230944520011
+
+
+/*1) create a class "Shape" with 2 attributes, "width" and "height". Make sure one can not access these attributes directly.
+provide accessor methods on these attributes and allow them to call from outside of your class.*/
+
+package workspace;
+
+class shape
+{
+	private int width;
+	private int height;
+	public void setWidth(int width) {
+		this.width = width;
+	}
+	public void setHeight(int height) {
+		this.height = height;
+	}
+	public int getWidth() {
+		return width;
+	}
+	public int getHeight() {
+		return height;
+	}
+	
+}
+
+	public class assign_2_1 
+
+{
+	public static void main(String[] args)
+	{
+		shape s1=new shape();
+		s1.setWidth(100);
+		System.out.println("Width ="+s1.getWidth());
+		s1.setHeight(200);
+		System.out.println("Height ="+s1.getHeight());
+	}
+}
+
+/*2) Define a class "MyClass" and make sure clients can instantiate it , 
+a) without any argument
+b) with one int argument
+c) with two int arguments*/
+
+package workspace;
+class Myclass
+{
+	Myclass()
+	{
+		System.out.println("Inside Default Constructor");
+	}
+	
+	Myclass(int a)
+	{
+		System.out.println("Inside One Parameterized Constructor \t"+a);
+	}
+	Myclass(int x,int y)
+	{
+		System.out.println("Inside Two Parameterized Constructor \t"+x+"\t"+y);
+	}
+}
+	public class assign_2_1 
+
+{
+	public static void main(String[] args)
+	{
+		Myclass m1=new Myclass();
+		Myclass m2=new Myclass(10);
+		Myclass m3=new Myclass(10,20);
+	}
+}
+
+
+/*3) Define a class "Emp" with private static member "int cnt".
+How will u make sure that outsiders can read the value of cnt ?*/
+
+package workspace;
+    class Emp
+    {
+    	private static int Cnt=10;
+
+		public static int getCnt() {
+			return Cnt;
+		}
+    	
+    }
+	public class assign_2_1 
+
+{
+	public static void main(String[] args)
+	{
+		Emp e1=new Emp();
+		System.out.println("Value of cnt ="+e1.getCnt());
+	}
+}
+
+
+
+/*4) Define a class "DemoOb".
+create an instance of it.
+now create a reference and assign the reference created in the above statement.
+	Discuss what happens?
+Now since u have 2 references, take one of the reference and assign a new instance of the class.
+	Discuss what happens?
+(For ur discussion, write necessary comments in the program)
+*/
+
+package workspace;
+    class DemoOb
+    {
+    	private int num;
+    	DemoOb()
+    	{
+    		System.out.println("Inside Default Constructor");
+    	}
+    }
+	public class assign_2_1 
+
+{
+	public static void main(String[] args)
+	{
+		DemoOb d1=new DemoOb();//first instance
+		DemoOb d2=d1;//d2 is a reference to that instance where ob1 is referring to 
+		d1=new DemoOb();//here d1 is referring to new instance created
+	}
+}
+	/*
+	 first we have created the reference obj1 and assign this to one object on heap and then we have
+	 Initialized another reference obj2 with same object and then we assign the new object on heap and 
+	 give reference to obj2 now it will refer to the new object and stop referring the old object
+	*/
+
+
+/*5) Define 3 classes A , B and C
+
+in all these classes create static and nonstatic variables as well as methods.
+	Now Define a class "Demo" ,in which define "main" function. From this main function try to access all the members of A ,B  and C.
+*/
+
+package workspace;
+    class A
+    {
+    	private static int a=10;
+    	private int aa;
+		public static int getA() {
+			return a;
+		}
+		public int getAa() {
+			return aa;
+		}
+    }
+    class B
+    {
+    	private static int b=20;
+    	private int bb;
+		public static int getB() {
+			return b;
+		}
+		public int getBb() {
+			return bb;
+		}
+    }
+    class C
+    {
+    	private static int c=30;
+    	private int cc;
+		public static int getC() {
+			return c;
+		}
+		public int getCc() {
+			return cc;
+		}
+    	
+    }
+	public class Demo 
+
+{
+	public static void main(String[] args)
+	{
+		System.out.println(A.getA());
+		System.out.println(B.getB());
+		System.out.println(C.getC());
+		A a1=new A();
+		B b1=new B();
+		C c1=new C();
+		System.out.println(a1.getAa());
+		System.out.println(b1.getBb());
+		System.out.println(c1.getCc());
+	}
+}
+
+
+/*6) define static initializers in the above A,B and C classes and check the order of their execution*/
+
+package workspace;
+    class A
+    {
+    	private static int a=10;
+    	private int aa;
+		public static int getA() {
+			return a;
+		}
+		public int getAa() {
+			return aa;
+		}
+		static
+		{
+			System.out.println("Inside static Initialiser A");
+		}
+    }
+    class B
+    {
+    	private static int b=20;
+    	private int bb;
+		public static int getB() {
+			return b;
+		}
+		public int getBb() {
+			return bb;
+		}
+		static
+		{
+			System.out.println("Inside static Initialiser B");
+		}
+    }
+    class C
+    {
+    	private static int c=30;
+    	private int cc;
+		public static int getC() {
+			return c;
+		}
+		public int getCc() {
+			return cc;
+		}
+		static
+		{
+			System.out.println("Inside static Initialiser C");
+		}
+    }
+	public class Demo 
+
+{
+	public static void main(String[] args)
+	{
+		System.out.println(A.getA());
+		System.out.println(B.getB());
+		System.out.println(C.getC());
+		A a1=new A();
+		B b1=new B();
+		C c1=new C();
+		System.out.println(a1.getAa());
+		System.out.println(b1.getBb());
+		System.out.println(c1.getCc());
+	}
+}

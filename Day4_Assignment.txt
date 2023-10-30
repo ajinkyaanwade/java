@@ -1,0 +1,539 @@
+package pack_4;
+class First
+{
+	int num1;
+	private int num2;
+	public First()
+	{
+		num1=10;
+		num2=20;
+		System.out.println("inside default const of First");
+	}
+	public void disp1()
+	{
+		System.out.println(num1+","+num2);
+	}
+	public void add()
+	{
+		System.out.println(num1+num2);
+	}
+	public void sub()
+	{
+		System.out.println(num1-num2);
+	}
+}
+class Second
+{
+	int num3;
+	private int num4;
+	public Second()
+	{
+		num3=20;
+		num4=30;
+		System.out.println("inside default const of second");
+	}
+	public void disp1()
+	{
+		System.out.println(num3+","+num4);
+	}
+	public void add()
+	{
+		System.out.println(num3+num4);
+	}
+	public void sub()
+	{
+		System.out.println(num3-num4);
+	}
+}
+public class Two {
+
+	public static void main(String[] args) {
+		First f1=new First();
+		Second s1=new Second();
+		f1.disp1();
+		s1.disp1();
+		f1.add();
+		f1.sub();
+		s1.add();
+		s1.sub();
+	}
+
+}
+
+
+package pack_4;
+class First
+{
+	int num1;
+	static int num2;
+	First()
+	{
+		num1=10;
+		num2=20;
+	}
+	static void disp()
+	{
+		System.out.println("static variable is "+num2);
+	}
+	public void add()
+	{
+		System.out.println(num1+num2);
+	}
+	public void sub(int a,int b)
+	{
+		System.out.println(a-b);	}
+}
+public class Two 
+{
+	public static void main(String [] args)
+	{
+		First f1=new First();
+		f1.disp();
+		f1.add();
+		f1.sub(30, 20);
+	}
+}
+
+
+package pack_4;
+class Check
+{
+	int num1;
+	private int num2;
+	public int num3;
+	protected int num4;
+	Check()
+	{
+		num1=10;
+		num2=20;
+		num3=30;
+		num4=40;
+	}
+	public void disp()
+	{
+		System.out.println(num1+","+num2+","+num3+","+num4);
+	}
+}
+public class CheckDemo 
+{
+	public static void main(String [] args)
+	{
+		Check c1=new Check();
+		c1.disp();
+		int one=c1.num1;
+		//int two=c1.num2;-->error because not access private
+		int three=c1.num3;
+		int four=c1.num4;
+		System.out.println(one+","+three+","+four);
+	}
+}
+
+
+package pack_4;
+class Parent
+{
+	int num1=10;
+	public int num2=20;
+	protected int num3=30;
+	private int num4=40;
+	Parent()
+	{
+		System.out.println("inside parent const");
+	}
+	public void disp()
+	{
+		System.out.println("in parent disp");
+		System.out.println(num1+","+num2+","+num3+","+num4);
+	}
+}
+class Child extends Parent
+{
+	Child()
+	{
+		//super();
+		System.out.println("inside child const");
+	}
+	public void disp1()
+	{
+		System.out.println("inside child disp");
+	}
+}
+public class CheckDemo 
+{
+	public static void main(String [] args)
+	{
+		Child c1=new Child();
+		c1.disp();
+		c1.disp1();
+	}
+}
+
+
+
+package pack_4;
+class Parent
+{
+	Parent()
+	{
+		System.out.println("inside parent default const");
+	}
+}
+class Child extends Parent
+{
+	Child()
+	{
+		System.out.println("inside child default const");
+	}
+}
+class Sub extends Child
+{
+	Sub()
+	{
+		System.out.println("inside sub default const");
+	}
+}
+public class CheckDemo 
+{
+	public static void main(String [] args)
+	{
+		Sub s1=new Sub();
+	}
+}
+
+
+package pack_4;
+class Parent
+{
+	Parent()
+	{
+		System.out.println("inside parent default const");
+	}
+}
+class Child extends Parent
+{
+	Child()
+	{
+		System.out.println("inside child default const");
+	}
+}
+class Sub extends Parent
+{
+	Sub()
+	{
+		System.out.println("inside sub default const");
+	}
+}
+public class CheckDemo 
+{
+	public static void main(String [] args)
+	{
+		Child c1=new Child();
+		Sub s1=new Sub();
+	}
+}
+
+package pack_4;
+class Parent
+{
+	Parent()
+	{
+		System.out.println("inside parent default const");
+	}
+	public void disp1()
+	{
+		System.out.println("inside parent disp1");//overriden
+	}
+}
+class Child extends Parent
+{
+	Child()
+	{
+		System.out.println("inside child default const");
+	}
+	public void disp1()
+	{
+		System.out.println("inside child disp1");//overiding
+	}
+}
+public class CheckDemo 
+{
+	public static void main(String [] args)
+	{
+		Child c1=new Child();
+		c1.disp1();
+	}
+}
+
+
+package pack_4;
+class Parent
+{
+	Parent()
+	{
+		System.out.println("inside parent default const");
+	}
+	public void disp1(int a)
+	{
+		System.out.println("inside parent disp1");//overriden
+	}
+}
+class Child extends Parent
+{
+	Child()
+	{
+		System.out.println("inside child default const");
+	}
+	public void disp1()
+	{
+		System.out.println("inside child disp1");//overiding
+	}
+}
+public class CheckDemo 
+{
+	public static void main(String [] args)
+	{
+		Child c1=new Child();
+		c1.disp1(19);
+	}
+}
+
+
+package pack_4;
+class Shape
+{
+	Shape()
+	{
+		System.out.println("inside parent default const");
+	}
+	public void draw()
+	{
+		
+	}
+}
+class Circle extends Shape
+{
+	Circle()
+	{
+		System.out.println("inside child default const");
+	}
+	public void draw()
+	{
+		System.out.println("draw circle");
+	}
+}
+class Polygon extends Shape
+{
+	Polygon()
+	{
+		
+	}
+	public void draw()
+	{
+		System.out.println("draw polygon");
+	}
+}
+class Rectangle extends Shape
+{
+	Rectangle()
+	{
+		
+	}
+	public void draw()
+	{
+		System.out.println("draw rectangle");
+	}
+}
+public class ShapeDemo 
+{
+	static void perform(Shape ref)
+	{
+		ref.draw();
+	}
+	public static void main(String [] args)
+	{
+		perform(new Circle());
+		perform(new Polygon());
+		perform(new Rectangle());
+	}
+}
+
+
+
+package pack_4;
+class Shape
+{
+	Shape()
+	{
+		System.out.println("inside parent default const");
+	}
+	public void draw()
+	{
+		
+	}
+}
+class Circle extends Shape
+{
+	Circle()
+	{
+		System.out.println("inside child default const");
+	}
+	public void draw()
+	{
+		System.out.println("draw circle");
+	}
+}
+class Polygon extends Shape
+{
+	Polygon()
+	{
+		
+	}
+	public void draw()
+	{
+		System.out.println("draw polygon");
+	}
+}
+class Rectangle extends Shape
+{
+	Rectangle()
+	{
+		
+	}
+	public void draw()
+	{
+		System.out.println("draw rectangle");
+	}
+}
+public class ShapeDemo 
+{
+	static void perform(Shape ref)
+	{
+		ref.draw();
+	}
+	public static void main(String [] args)
+	{
+		Shape arr[]=new Shape[3];
+		arr[0]=new Circle();
+		arr[1]=new Polygon();
+		arr[2]=new Rectangle();
+		for(int i=0;i<arr.length;i++)
+		{
+			arr[i].draw();
+		}
+	}
+}
+
+
+
+
+package pack_4;
+interface Vehicle
+{
+	 void start();
+}
+class TwoWheeler implements Vehicle
+{
+	TwoWheeler()
+	{
+		
+	}
+	public void start()
+	{
+		System.out.println("star two wheeler");
+	}
+}
+class ThreeWheeler implements Vehicle
+{
+	ThreeWheeler()
+	{
+		
+	}
+	public void start()
+	{
+		System.out.println("start three wheeler");
+	}
+}
+class FourWheeler implements Vehicle
+{
+	FourWheeler()
+	{
+		
+	}
+	public void start()
+	{
+		System.out.println("start four wheeler");
+	}
+}
+public class VDemo 
+{
+	static void perform(Vehicle ref)
+	{
+		ref.start();
+	}
+	public static void main(String [] args)
+	{
+		perform(new TwoWheeler());
+		perform(new ThreeWheeler());
+		perform(new FourWheeler());
+	}
+}
+
+
+
+
+package pack_4;
+interface Vehicle
+{
+	 void start();
+}
+class TwoWheeler implements Vehicle
+{
+	TwoWheeler()
+	{
+		
+	}
+	public void start()
+	{
+		System.out.println("star two wheeler");
+	}
+}
+class ThreeWheeler implements Vehicle
+{
+	ThreeWheeler()
+	{
+		
+	}
+	public void start()
+	{
+		System.out.println("start three wheeler");
+	}
+}
+class FourWheeler implements Vehicle
+{
+	FourWheeler()
+	{
+		
+	}
+	public void start()
+	{
+		System.out.println("start four wheeler");
+	}
+}
+public class VDemo 
+{
+	static void perform(Vehicle ref)
+	{
+		ref.start();
+	}
+	public static void main(String [] args)
+	{
+		Vehicle arr[]=new Vehicle[3];
+		arr[0]=new TwoWheeler();
+		arr[1]=new ThreeWheeler();
+		arr[2]=new FourWheeler();
+		for(int i=0;i<arr.length;i++)
+		{
+			arr[i].start();
+		}
+	}
+}
