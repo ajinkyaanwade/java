@@ -1,0 +1,121 @@
+package assign_10;
+/*01) create a multi-threaded application by using  "extends Thread " method.create 2 threads. 
+ * they should display characters from A to J.*/
+
+public class Th1 extends Thread
+{
+     public void run()
+	 {
+    	 //System.out.println(Thread.currentThread().getName());
+		 //System.out.println(Thread.currentThread().getName());
+
+		 for(char c='A';c<='J';c++)
+		 {
+			 System.out.println(Thread.currentThread().getName()+" "+c);
+		 }
+	 }
+	 
+	public static void main(String args[])
+	{
+		Th1 t1=new Th1();
+		Th1 t2=new Th1();
+		t1.setName("First");
+		t2.setName("Second");
+		t1.start();
+		t2.start();
+	}
+}
+
+
+
+
+package assign_10;
+/*2) above program  using "implements Runnable" method.*/
+
+public class Th1 implements Runnable
+{
+     public void run()
+	 {
+		 System.out.println(Thread.currentThread().getName());
+
+		 for(char c='A';c<='J';c++)
+		 {
+			 System.out.println(c);
+		 }
+	 }
+	 
+	public static void main(String args[])
+	{
+		Th1 ob=new Th1();
+		Thread t1=new Thread(ob);
+		Thread t2=new Thread(ob);
+		t1.setName("First");
+		t2.setName("Second");
+		t1.start();
+		t2.start();
+	}
+}
+
+
+
+
+package assign_10;
+/*3) create 3 threads in such a way that while one thread is executing, 2 threads cannot interfere.
+ *  they should display output "Exec  0" to "Exec 5".*/
+
+public class Th1 implements Runnable
+{
+     synchronized public void run()
+	 {
+		 System.out.println(Thread.currentThread().getName());
+
+		 for(int i=0;i<=5;i++)
+		 {
+			 System.out.println("Exec "+i);
+		 }
+	 }
+	 
+	public static void main(String args[])
+	{
+		Th1 ob=new Th1();
+		Thread t1=new Thread(ob);
+		Thread t2=new Thread(ob);
+		Thread t3=new Thread(ob);
+		t1.setName("First");
+		t2.setName("Second");
+		t3.setName("Third");
+		t1.start();
+		t2.start();
+		t3.start();
+	}
+}
+
+
+
+package assign_10;
+/*4)create 2 threads. Write a program which displays number 1 to 10 using class lock. 
+[hint:- use "implements Runnable" and synchronized block]*/
+
+public class Th1 implements Runnable
+{
+     synchronized public void run()
+	 {
+		 System.out.println(Thread.currentThread().getName());
+
+		 for(int i=0;i<=10;i++)
+		 {
+			 System.out.println("Exec "+i);
+		 }
+	 }
+	 
+	public static void main(String args[])
+	{
+		Th1 ob=new Th1();
+		Thread t1=new Thread(ob);
+		Thread t2=new Thread(ob);
+		t1.setName("First");
+		t2.setName("Second");
+		t1.start();
+		t2.start();
+	}
+}
