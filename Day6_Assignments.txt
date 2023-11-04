@@ -1,0 +1,294 @@
+package assign7_;
+
+/*public interface MouseHandler
+{
+void mouseClicked();
+void mousePressed();
+void mouseReleased();
+}
+public interface WindowHandler
+{
+void windowClosing();
+void windowClosed();
+}
+
+public class WindowGUIApp implements MouseHandler,WindowHandler
+{
+}
+public class GUIDemo
+{
+main()
+{
+	create the object of WindowGUIApp and invoke all the methods
+}
+}*/
+
+interface MouseHandler
+{
+	void mouseClicked();
+	void mousePressed();
+	void mouseReleased();
+}
+interface WindowHandler
+{
+	void windowClosing();
+	void windowClosed();
+}
+class WindowGUIApp implements MouseHandler, WindowHandler
+{
+	public void mouseClicked()
+	{
+		System.out.println("mouse clicked");
+	}
+	public void mousePressed() 
+	{
+		System.out.println("mouse pressed");
+	}
+	public void mouseReleased()
+	{
+		System.out.println("mouse released");
+	}
+	public void windowClosing()
+	{
+		System.out.println("window closing");
+	}
+	public void windowClosed()
+	{
+		System.out.println("window closed");
+	}
+}
+public class GUIDemo
+{
+	public static void main(String[] args) 
+	{
+		WindowGUIApp w1=new WindowGUIApp();
+		w1.mouseClicked();
+		w1.mousePressed();
+		w1.mouseReleased();
+		w1.windowClosing();
+		w1.windowClosed();
+	}
+}
+
+
+
+
+/*on Developer side create the following interface
+	create necessary jar and docs
+
+public interface PersistenceMechanism
+{
+	void writeData(String ref);
+	String readData();
+}
+
+
+create following classes on client side
+
+class FileSystem implements PersistenceMechanism
+{
+	public void writeData(String ref)
+	{
+		// how to write data inside FileSystem
+	}
+	public String readData()
+	{
+		// how to read data from FileSystem
+	}
+}
+
+class DatabaseSystem implements PersistenceMechanism
+{
+	public void writeData(String ref)
+	{
+		// how to write data inside DatabaseSystem
+	}
+	public String readData()
+	{
+		// how to read data from DatabaseSystem
+	}
+}
+
+class BigdataSystem implements PersistenceMechanism
+{
+	public void writeData(String ref)
+	{
+		// how to write data inside BigdataSystem
+	}
+	public String readData()
+	{
+		// how to read data from BigdataSystem
+	}
+}
+
+create one more class "Demo" and in its main function create array of "PersistenceMechanism" interface, store all the child class objects , traverse the array and invoke only "BigdataSystem" class "writeData" and "readData" methods.
+
+*/
+
+/**
+ * 
+ */
+package dev6_2;
+
+/**
+ * @author ajink
+ *
+ */
+public interface PersistenceMechanism
+{
+	void writeData(String ref);
+	String readData();
+}
+
+
+
+package client_6_2;
+
+import dev6_2.PersistenceMechanism;
+
+class FileSystem implements PersistenceMechanism
+{
+	String ref;
+	public void writeData(String ref)
+	{
+		this.ref=ref;
+	}
+	public String readData()
+	{
+		return ref;
+	}
+}
+
+class DatabaseSystem implements PersistenceMechanism
+{
+	String ref;
+	public void writeData(String ref)
+	{
+		this.ref=ref;
+	}
+	public String readData()
+	{
+		return ref;
+	}
+}
+
+class BigdataSystem implements PersistenceMechanism
+{
+	String ref;
+	public void writeData(String ref)
+	{
+		this.ref=ref;
+	}
+	public String readData()
+	{
+		return ref;
+	}
+}
+
+
+
+package client_6_2;
+
+import java.util.Scanner;
+
+import dev6_2.PersistenceMechanism;
+
+public class Demo {
+
+	public static void main(String[] args)
+	{
+		Scanner sc= new Scanner(System.in);
+		PersistenceMechanism arr[]=new PersistenceMechanism[3];
+		arr[0]=new FileSystem();
+		arr[1]=new DatabaseSystem();
+		arr[2]=new BigdataSystem();
+		for(int i=0;i<arr.length;i++)
+		{
+			String m=sc.nextLine();
+			arr[i].writeData(m);
+		}
+		for(int j=0;j<arr.length;j++)
+		{
+			System.out.println(arr[j].readData());
+		}
+	}
+}
+
+
+
+
+package forclientnew;
+
+import java.lang.reflect.Constructor;
+
+import ppd.Vehicle;
+
+class FourWheeler implements Vehicle
+{
+	int Changegear,Speed,Brakes;
+	public FourWheeler(int a,int b, int c)
+	{
+		this.Changegear= a;
+		this.Speed= b;
+		this.Brakes= c;
+	}
+	public void changeGear(int a)
+	{
+		System.out.println("fourwheeler gear is changed to "+Changegear);
+	}
+	public void speedUp(int a)
+	{
+        System.out.println("fourwheeler speed is increased to "+Speed);
+    }
+	public void applyBrakes(int a)
+	{
+		System.out.println("fourwheeler applybrakes speed decreased to "+Brakes);
+	}
+}
+
+
+class TwoWheeler implements Vehicle
+{
+	int Changegear;
+	int Speed;
+	int Brakes;
+	public TwoWheeler(int a,int b, int c)
+	{
+		this.Changegear= a;
+		this.Speed= b;
+		this.Brakes= c;
+	}
+	public void changeGear(int a)
+	{
+		System.out.println("twowheeler gear is changed to "+Changegear);
+	}
+	public void speedUp(int b)
+	{
+		System.out.println("twowheeler speed is increased to "+Speed);
+	}
+	public void applyBrakes(int c)
+	{
+		System.out.println("twowheeler applybrakes speed decreased to "+Brakes);
+	}
+}
+
+public class Demo
+{
+	static void Perform(Vehicle ref)
+	{
+	    ref.changeGear(0);
+	    ref.speedUp(0);
+	    ref.applyBrakes(0);
+	}
+	public static void main(String args[])
+	{
+		Vehicle v1=new FourWheeler(3,70,0);
+		Perform(v1);
+		Vehicle v2=new TwoWheeler(2,40,0);
+		Perform(v2);
+	}
+}
+
+
+
+
