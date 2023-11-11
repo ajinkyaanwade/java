@@ -1,6 +1,4 @@
-Name:- Sushil Gavit
-Prn no. :- 092
- 
+
 /* (1) define your exception class by name "MyArithException"
 (MyArithException.java)
 define class "Calculator"   (Calculator.java)
